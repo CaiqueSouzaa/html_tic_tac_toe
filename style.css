@@ -1,0 +1,88 @@
+@keyframes player-colors{
+    0% {
+        color: red;
+    }
+    25% {
+        color: green;
+    }
+    50% {
+        color: blue;
+    }
+    75% {
+        color: magenta;
+    }
+    100% {
+        color: red;
+    }
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Decoration */
+    background-color: #2b3a67;
+    font-family: 'Roboto', sans-serif;
+}
+
+.game-board {
+    width: 400px;
+    height: 400px;
+
+    /* Decoration */
+    /* background-color: #496A81; */
+}
+
+.game-row-board {
+    display: flex;
+    justify-content: center;
+}
+
+.game-place {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+
+    /* Decoration */
+    /* background-color: #66999B; */
+}
+
+#player {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-size: 30px;
+
+    animation: player-colors 5s linear infinite;
+}
+
+.class_x {
+    display: flex;
+}
+
+.class_x .x1 {
+    width: 10px;
+    height: 100%;
+    transform: rotateZ(45deg);
+
+    background-color: #404040;
+}
+
+.class_x .x2 {
+    width: 10px;
+    height: 100%;
+    transform: rotateZ(-45deg);
+
+    background-color: #404040;
+}
+
+.class_o {
+    width: 70%;
+    height: 70%;
+    border: 10px solid #404040;
+    border-radius: 100%;
+}
