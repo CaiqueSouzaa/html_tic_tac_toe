@@ -14,6 +14,26 @@ const getPositionClick = function (id) {
             const clicked_position = document.getElementById(id);
             play_count++;
             createX(clicked_position);
+
+            if(player1Win() == 1) {
+                player_element.textContent = 'Player 1 Win!';
+
+                //Remove all "onclick"
+                const p00 = document.getElementById('p00').removeAttribute('onclick');
+                const p01 = document.getElementById('p01').removeAttribute('onclick');
+                const p02 = document.getElementById('p02').removeAttribute('onclick');
+                const p10 = document.getElementById('p10').removeAttribute('onclick');
+                const p11 = document.getElementById('p11').removeAttribute('onclick');
+                const p12 = document.getElementById('p12').removeAttribute('onclick');
+                const p20 = document.getElementById('p20').removeAttribute('onclick');
+                const p21 = document.getElementById('p21').removeAttribute('onclick');
+                const p22 = document.getElementById('p22').removeAttribute('onclick');
+                
+                // if(play_count ==  9 && !player1Win && !player2Win) {
+                //     const player_element = document.getElementById('player');
+                //     player_element.textcontent = 'Tie';
+                // }
+            }
         }
     }
     else {
@@ -26,8 +46,29 @@ const getPositionClick = function (id) {
             const clicked_position = document.getElementById(id);
             play_count++;
             createO(clicked_position);
+
+            if(player2Win() == 1) {
+                player_element.textContent = 'Player 2 Win!';
+
+                //Remove all "onclick"
+                const p00 = document.getElementById('p00').removeAttribute('onclick');
+                const p01 = document.getElementById('p01').removeAttribute('onclick');
+                const p02 = document.getElementById('p02').removeAttribute('onclick');
+                const p10 = document.getElementById('p10').removeAttribute('onclick');
+                const p11 = document.getElementById('p11').removeAttribute('onclick');
+                const p12 = document.getElementById('p12').removeAttribute('onclick');
+                const p20 = document.getElementById('p20').removeAttribute('onclick');
+                const p21 = document.getElementById('p21').removeAttribute('onclick');
+                const p22 = document.getElementById('p22').removeAttribute('onclick');
+
+                // if(play_count ==  9 && !player1Win && !player2Win) {
+                //     const player_element = document.getElementById('player');
+                //     player_element.textcontent = 'Tie';
+                // }
+            }
         }
     }
+    console.log(play_count);
 
     // game_board[Number(id[1])][Number(id[2])] = 1;
     //console.log(game_board);
@@ -68,3 +109,33 @@ function createO(clicked_position) {
 
     clicked_position.appendChild(element);
 }
+
+const player1Win = () => {
+    if(
+        game_board[0][0] == 1 && game_board[0][1] == 1 && game_board[0][2] == 1 || // HORIZONTAL
+        game_board[1][0] == 1 && game_board[1][1] == 1 && game_board[1][2] == 1 || // HORIZONTAL
+        game_board[2][0] == 1 && game_board[2][1] == 1 && game_board[2][2] == 1 || // HORIZONTAL
+        game_board[0][0] == 1 && game_board[1][0] == 1 && game_board[2][0] == 1 || // VERTICAL
+        game_board[0][1] == 1 && game_board[1][1] == 1 && game_board[2][1] == 1 || // VERTICAL
+        game_board[0][2] == 1 && game_board[1][2] == 1 && game_board[2][2] == 1 || // VERTICAL
+        game_board[0][0] == 1 && game_board[1][1] == 1 && game_board[2][2] == 1 ||
+        game_board[2][0] == 1 && game_board[1][1] == 1 && game_board[0][2] == 1
+    ) {
+        return 1;
+    }
+};
+
+const player2Win = () => {
+    if(
+        game_board[0][0] == 2 && game_board[0][1] == 2 && game_board[0][2] == 2 || // HORIZONTAL
+        game_board[1][0] == 2 && game_board[1][1] == 2 && game_board[1][2] == 2 || // HORIZONTAL
+        game_board[2][0] == 2 && game_board[2][1] == 2 && game_board[2][2] == 2 || // HORIZONTAL
+        game_board[0][0] == 2 && game_board[1][0] == 2 && game_board[2][0] == 2 || // VERTICAL
+        game_board[0][1] == 2 && game_board[1][1] == 2 && game_board[2][1] == 2 || // VERTICAL
+        game_board[0][2] == 2 && game_board[1][2] == 2 && game_board[2][2] == 2 || // VERTICAL
+        game_board[0][0] == 2 && game_board[1][1] == 2 && game_board[2][2] == 2 ||
+        game_board[2][0] == 2 && game_board[1][1] == 2 && game_board[0][2] == 2
+    ) {
+        return 1;
+    }
+};
